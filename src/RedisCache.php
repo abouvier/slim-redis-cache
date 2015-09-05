@@ -25,7 +25,7 @@ class RedisCache extends \Slim\Middleware
 	protected $client;
 	protected $settings;
 
-	public function __construct(ClientInterface $client, array $settings = array())
+	public function __construct(ClientInterface $client, array $settings = [])
 	{
 		$this->client = $client;
 		$this->settings = $settings;
