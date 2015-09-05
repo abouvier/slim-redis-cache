@@ -18,14 +18,14 @@
 
 namespace Slim\Middleware;
 
-use \Predis\Client;
+use \Predis\ClientInterface;
 
 class RedisCache extends \Slim\Middleware
 {
 	protected $client;
 	protected $settings;
 
-	public function __construct(Client $client, array $settings = array())
+	public function __construct(ClientInterface $client, array $settings = array())
 	{
 		$this->client = $client;
 		$this->settings = $settings;
