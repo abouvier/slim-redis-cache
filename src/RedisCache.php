@@ -40,16 +40,14 @@ class RedisCache extends \Slim\Middleware
 			$key .= '?' . $env['QUERY_STRING'];
 		$response = $app->response;
 
-		if ($this->client->exists($key))
-		{
+		if ($this->client->exists($key)) {
 			$response->setBody($this->client->get($key));
 			return;
 		}
 
 		$this->next->call();
 
-		if ($response->getStatus() == 200)
-		{
+		if ($response->getStatus() == 200) {
 			$this->client->set($key, $response->getBody());
 			if (array_key_exists('timeout', $this->settings))
 				$this->client->expire($key, $this->settings['timeout']);
